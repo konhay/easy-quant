@@ -97,20 +97,16 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
  	order by ts_code
  ) -- check with ma5 slope 
  
- select a.*, b.*
- from daily_limit a
- inner join checkSlope b
- on a.ts_code = b.ts_code
- and a.trade_date = %s
- order by a.ts_code
- ;
+ select a.*, b.* from daily_limit a inner join checkSlope b
+ on a.ts_code = b.ts_code and a.trade_date = %s
+ order by a.ts_code;
 ```
 
 **For complete database schema script, please contact konhay@163.com*.
 
 ## Visualization
 
-* Profit and Loss Distribution of Market, [<button>*Click* </button>](data/html/Profit_and_Loss_Distribution_of_Market,_2024-05-10.html) to open with *html*.
+* Profit and Loss Distribution of Market
 
 ```python
 from service.tushare_querier import get_distribution
@@ -119,7 +115,7 @@ df = get_distribution("20240510")
 plot_distribution(df)
 ```
 
-* Example of Animation Effect, [<button>*Click* </button>](data/html/000001.SZ(PNGAY)_Trend_of_120Days.html) to open with *html*.
+* Example of Animation Effect
 
 ```python
 from service.tushare_querier import get_stock_daily
@@ -128,7 +124,7 @@ df = get_stock_daily("000001.SZ", "20240510", count=120)
 plot_animations_px(df, y_name='close')
 ```
 
-* Candlestick of Underlying Asset, [<button>*Click* </button>](data/html/000001.SZ(PNGAY)_Candlestick,_2024-05-10.html) to open with *html*.
+* Candlestick of Underlying Asset
 
 ```python
 from service.tushare_querier import get_stock_daily
@@ -138,6 +134,7 @@ df.set_index("trade_date", inplace=True)
 plot_quantfig(df)
 ```
 
+<img src="images/000001.SZ(PNGAY)_Candlestick%2C_2024-05-10.jpg" alt="Profit_and_Loss_Distribution_of_Market,_2024-05-10.jpg" style="zoom:50%;" />
 
 
 ## Next
