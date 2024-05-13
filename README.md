@@ -139,4 +139,4 @@ plot_quantfig(df)
 
 ## Next
 
-At present, the project has relatively strong data processing and visualization capabilities. Next, we will focus on the development of factors and policies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
+Next, we will focus on the development of factors and policies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
