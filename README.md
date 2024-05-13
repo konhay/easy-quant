@@ -4,7 +4,7 @@
 This project implements a high-level quantitative toolkit based on open stock data platforms. It uses *mysql* as the backend database, and extracts, processes and integrates daily market data to support the research and development of quantitative strategies.
 
 ## Data Source
-<img src="img_2.png" alt="img_2.png" style="zoom:50%;" />
+![img_2](https://github.com/konhay/easy-quant/assets/26830433/52862d6a-e117-4bff-8b65-d33800b83b01)
 
 [*Tushare*](https://www.tushare.pro/) is a free, open source python financial data interface package. It mainly realizes the processing of stock data, and provides financial analysts with fast, clean and diverse data interfaces, so that they can focus more on the research and implementation of strategies and models.
 
@@ -12,7 +12,7 @@ This project implements a high-level quantitative toolkit based on open stock da
     and format '60XXXX.SH', '00XXXX.SZ' for individual stock
     and '000001.SH', '399001.SZ' for index of SSE and SZSE.
 
-<img src="img_1.png" alt="img_1.png" style="zoom:50%;" />
+![img_1](https://github.com/konhay/easy-quant/assets/26830433/9d985640-776f-48aa-926d-00a65f16fdaf)
 
 [*JoinQuant*](https://www.joinquant.com/) is a cloud platform tailored for quants, providing easy-to-use API documentation that allows quants to quickly implement and use their own quant trading strategies.
 
@@ -134,8 +134,7 @@ df.set_index("trade_date", inplace=True)
 plot_quantfig(df)
 ```
 
-<img src="images/000001.SZ(PNGAY)_Candlestick%2C_2024-05-10.jpg" alt="Profit_and_Loss_Distribution_of_Market,_2024-05-10.jpg" style="zoom:50%;" />
-
+![000001 SZ(PNGAY)_Candlestick_2024-05-10](https://github.com/konhay/easy-quant/assets/26830433/6fc53bb9-fcd1-438c-97dd-9c0a37c41343)
 
 ## Next
 
