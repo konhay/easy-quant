@@ -41,7 +41,7 @@ The ***plotter*** package provides a rich visualization implementation. It integ
 
 The ***service*** package provides the most important data processing capabilities and is built on top of *Tushare* and *JoinQuant*'s remote python APIs. After the market closes, we will call the interfaces of these data platforms to append the latest trading data to our *mysql* database. This process ensures that the data in our database is up to date. Meanwhile, we provide advanced methods for calendar, market data, stock information and trading indicators. Based on these methods, we can easily write our own strategies, such as *"look for stocks that suddenly rose by the daily limit", "Which stocks triggered our MA rule today"*. Of course, you can also write your strategy as a stored procedure and let the database process it periodically.
 
-The **tools** package provides some basic functions, such as database services (on *mysql*), mathematical methods, and so on.
+The ***tools*** package provides some basic functions, such as database services (on *mysql*), mathematical methods, and so on.
 
 ## Database
 
