@@ -98,17 +98,10 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
  ) -- check with ma5 slope 
  
  select a.*, b.*
- from 
- (select t1.* 
- 	from pro_stock_daily t1 
- 	where 1=1 
- 	and t1.trade_date = %s
- 	and substring(t1.ts_code,1,2) in ('00','60')
- 	and abs(round(t1.pre_close*1.1,2) - round(t1.close,2))<=0.02
- 	order by ts_code asc
- ) a -- get daily limit 
+ from daily_limit a
  inner join checkSlope b
- on a.ts_code = b.ts_code 
+ on a.ts_code = b.ts_code
+ and a.trade_date = %s
  order by a.ts_code
  ;
 ```
