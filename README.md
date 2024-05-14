@@ -1,7 +1,7 @@
 # EasyQuant
 ## Introduction
 
-This project implements a high-level quantitative toolkit based on open stock data platforms. It uses *mysql* as the backend database, and extracts, processes and integrates daily market data to support the research and development of quantitative strategies.
+This project implements a high-level quantitative toolkit based on open stock data platforms. It uses *mysql* as the backend database, and extracts, processes and integrates daily market data to support the research and development of quantitative trading strategies.
 
 ## Data Source
 ![img_2](https://github.com/konhay/easy-quant/assets/26830433/52862d6a-e117-4bff-8b65-d33800b83b01)
@@ -138,4 +138,4 @@ plot_quantfig(df)
 
 ## Next
 
-Next, we will focus on the development of factors and policies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
+Next, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
