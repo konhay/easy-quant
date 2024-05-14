@@ -10,7 +10,7 @@ This project implements a high-level quantitative toolkit based on open stock da
 
     with code field name 'ts_code'
     and format '60XXXX.SH', '00XXXX.SZ' for individual stock
-    and '000001.SH', '399001.SZ' for index of SSE and SZSE.
+    and '000001.SH', '399001.SZ' for index of SSE (Shanghai Stock Exchange) and SZSE (Shenzhen Stock Exchange).
 
 ![img_1](https://github.com/konhay/easy-quant/assets/26830433/9d985640-776f-48aa-926d-00a65f16fdaf)
 
@@ -43,9 +43,13 @@ The ***service*** package provides the most important data processing capabiliti
 
 The ***tools*** package provides some basic functions, such as database services (on *mysql*), mathematical methods, and so on.
 
-## Database
+## Robust Database
+![image](https://github.com/konhay/easy-quant/assets/26830433/fa6fc289-e136-4804-a49c-c405ac5c1893)
 
-* Example of mysql function
+<u>Let the database take over as much as possible.</u> Based on this principle, we will build lightweight python applications. With the powerful functions of *mysql* database, we can not only define built-in functions, but also encapsulate all complex data processing and query operations into stored procedures or customized query statements.
+
+### Examples
+#### User-defined functions
 
 ```sql
 -- functionName: getTradeDateBack
@@ -65,7 +69,7 @@ begin
 end
 ```
 
-* Example of custom query
+#### Custom query
 
 ```sql
 SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AND 'version=1.0';
@@ -75,10 +79,8 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 -- queryName: getSuddenLimit 
 -- description: Get sudden limit-up stocks using MA5 slope
 -- inputs: trade_date
-
  set @TD1 = (select getTradeDateBackgetTradeDateBack(%s,1));
  set @TD2 = (select getTradeDateBack(%s,2));
- 
  with checkSlope as 
  (select *  
  	from (select t1.ts_code
@@ -95,47 +97,49 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
  	) t 
  	where slope < 0.01 
  	order by ts_code
- ) -- check with ma5 slope 
- 
+ ); -- check with ma5 slope
+
  select a.*, b.* from daily_limit a inner join checkSlope b
- on a.ts_code = b.ts_code and a.trade_date = %s
- order by a.ts_code;
+ on a.ts_code = b.ts_code and a.trade_date = %s order by a.ts_code;
 ```
 
 **For complete database schema script, please contact konhay@163.com*.
 
-## Visualization
+## Powerful Visualization
 
-* Profit and Loss Distribution of Market
+### Examples
+Profit and Loss Distribution of Market
 
 ```python
 from service.tushare_querier import get_distribution
 from plotter.plotly_plotter import plot_distribution
-df = get_distribution("20240510")
+
+df = get_distribution(trade_date="20240510")
 plot_distribution(df)
 ```
 
-* Example of Animation Effect
+Animation Effect
 
 ```python
 from service.tushare_querier import get_stock_daily
 from plotter.plotly_plotter import plot_animations_px
-df = get_stock_daily("000001.SZ", "20240510", count=120)
+
+df = get_stock_daily(ts_code="000001.SZ", trade_date="20240510", count=120)
 plot_animations_px(df, y_name='close')
 ```
 
-* Candlestick of Underlying Asset
+Candlestick of Underlying Asset
 
 ```python
 from service.tushare_querier import get_stock_daily
 from plotter.cufflinks_plotter import plot_quantfig
-df = get_stock_daily("000001.SZ", "20240510", count=120)
+
+df = get_stock_daily(ts_code="000001.SZ", trade_date="20240510", count=120)
 df.set_index("trade_date", inplace=True)
 plot_quantfig(df)
 ```
 
 ![000001 SZ(PNGAY)_Candlestick_2024-05-10](https://github.com/konhay/easy-quant/assets/26830433/6fc53bb9-fcd1-438c-97dd-9c0a37c41343)
 
-## Next
-
-Next, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
+## TODO
+We will continue to improve existing capabilities and integrate more available math, statistics, and deep learning methods. Most of all, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
