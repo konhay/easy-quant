@@ -361,7 +361,7 @@ def plot_distribution(df):
         print(df_bar)
 
         # Plot bar chart
-        colors = ['green', ] * 11 + ['red', ] * 11
+        colors = ['lightseagreen', ] * 11 + ['orangered', ] * 11
         fig = go.Figure(data=[go.Bar(
             x=df_bar["chg"],
             y=df_bar["count"],
