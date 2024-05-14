@@ -10,7 +10,7 @@ This project implements a high-level quantitative toolkit based on open stock da
 
     with code field name 'ts_code'
     and format '60XXXX.SH', '00XXXX.SZ' for individual stock
-    and '000001.SH', '399001.SZ' for index of SSE (Shanghai Stock Exchange) and SZSE (Shenzhen Stock Exchange).
+    and '000001.SH', '399001.SZ' for index of SSE(Shanghai Stock Exchange) and SZSE(Shenzhen Stock Exchange).
 
 ![img_1](https://github.com/konhay/easy-quant/assets/26830433/9d985640-776f-48aa-926d-00a65f16fdaf)
 
@@ -108,7 +108,7 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 ## Powerful Visualization
 
 ### Examples
-Profit and Loss Distribution of Market
+#### Profit and Loss Distribution
 
 ```python
 from service.tushare_querier import get_distribution
@@ -118,7 +118,7 @@ df = get_distribution(trade_date="20240510")
 plot_distribution(df)
 ```
 
-Animation Effect
+#### Animation Effect
 
 ```python
 from service.tushare_querier import get_stock_daily
@@ -128,7 +128,7 @@ df = get_stock_daily(ts_code="000001.SZ", trade_date="20240510", count=120)
 plot_animations_px(df, y_name='close')
 ```
 
-Candlestick of Underlying Asset
+#### Candlestick
 
 ```python
 from service.tushare_querier import get_stock_daily
