@@ -108,6 +108,8 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 ## Powerful Visualization
 
 ### Examples
+![visualization](https://github.com/konhay/easy-quant/assets/26830433/aca97d16-e48b-4f1e-ab21-9e208777d35b)
+
 #### Profit and Loss Distribution
 
 ```python
@@ -139,7 +141,31 @@ df.set_index("trade_date", inplace=True)
 plot_quantfig(df)
 ```
 
-![000001 SZ(PNGAY)_Candlestick_2024-05-10](https://github.com/konhay/easy-quant/assets/26830433/6fc53bb9-fcd1-438c-97dd-9c0a37c41343)
+## Flexible Strategy
+
+Strategies can be implemented through database query.
+
+### Example
+
+```python
+from tools.mysql_service import MySQLUtil
+from service.tushare_querier import get_query_statement
+
+sql = get_query_statement("findKeyStand")
+args = {"trade_date": "20240510"}
+df = MySQLUtil.df_read(sql, args)
+```
+
+Result of strategy *findKeyStand* on 20240220
+
+| ts_code   | trade_date | open | high | low  | close | pct_chg | ma5  | ma20 |
+| --------- | ---------- | ---- | ---- | ---- | ----- | ------- | ---- | ---- |
+| 002775.SZ | 20240220   | 2.27 | 2.31 | 2.18 | 2.31  | 1.3158  | 2.27 | 3.23 |
+
+002775.SZ's experienced considerable gains on the next trading day (20240221)
+
+![findKeyStand](https://github.com/konhay/easy-quant/assets/26830433/d0af1563-1bd8-4bd8-a2e1-1e620a04c6c1)
+
 
 ## TODO
 We will continue to improve existing capabilities and integrate more available math, statistics, and deep learning methods. Most of all, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
