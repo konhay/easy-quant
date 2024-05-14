@@ -110,6 +110,8 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 ### Examples
 ![visualization](https://github.com/konhay/easy-quant/assets/26830433/aca97d16-e48b-4f1e-ab21-9e208777d35b)
 
+*PS: Thank [Meitu](https://pc.meitu.com/) for providing free online photo stitching service (long picture stitching).*
+
 #### Profit and Loss Distribution
 
 ```python
