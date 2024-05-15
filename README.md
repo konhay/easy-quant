@@ -110,8 +110,6 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 ### Examples
 ![visualization](https://github.com/konhay/easy-quant/assets/26830433/aca97d16-e48b-4f1e-ab21-9e208777d35b)
 
-*PS: [Meitu](https://pc.meitu.com/) provides free online picture stitching service (long picture stitching).*
-
 Profit and Loss Distribution
 
 ```python
@@ -145,9 +143,9 @@ plot_quantfig(df)
 
 ## Flexible Strategy
 
-Strategies can be implemented through database query.
+### Example 1
 
-### Example
+Strategies can be implemented through database query, e.g. "findKeyStand".
 
 ```python
 from tools.mysql_service import MySQLUtil
@@ -168,6 +166,30 @@ Result of strategy *findKeyStand* on 20240220
 
 ![findKeyStand](https://github.com/konhay/easy-quant/assets/26830433/d0af1563-1bd8-4bd8-a2e1-1e620a04c6c1)
 
+### Example 2
+
+Strategies can also be based on mathematical methods, such as To find historical tick of most similarity with a given end date "2019-12-30" for 000001.XSHG(SSE Index).
+
+```python
+from tools.math_tools import get_similarity
+
+df = get_df_tick(security="000001.XSHG", days=250, end_dt="2019-12-30")
+# df['date'] = pd.to_datetime(df['date'])
+groups = dict(list(df.groupby(df['date'].dt.date)['close']))
+tick_edt = list(list(groups.values())[-1])
+trade_days = list(groups.keys())[:-1]
+result={}
+for i in trade_days:
+    tick_i = list(groups[i])
+    # Calculate similarity by Frechet Distance
+    similarity = get_similarity(tick_edt, tick_i)
+    result.setdefault(str(i),similarity)
+print(min(result.items(),key=lambda x:x[1])[0])
+```
+
+Output: 2019-11-01
+
+![Tick of 000001 XSHG(SSE index)](https://github.com/konhay/easy-quant/assets/26830433/c39031a3-108c-4a3a-b5d1-5bc9587c99b2)
 
 ## TODO
 We will continue to improve existing capabilities and integrate more available math, statistics, and deep learning methods. Most of all, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
