@@ -145,7 +145,7 @@ plot_quantfig(df)
 
 ### Example 1
 
-Strategies can be implemented through database query, e.g. "findKeyStand".
+Strategies can be implemented through database query, e.g. *"findKeyStand"*, a factor-based strategy.
 
 ```python
 from tools.mysql_service import MySQLUtil
@@ -156,7 +156,7 @@ args = {"trade_date": "20240510"}
 df = MySQLUtil.df_read(sql, args)
 ```
 
-Result of strategy *findKeyStand* on 20240220
+Result of strategy *"findKeyStand"* on 20240220
 
 | ts_code   | trade_date | open | high | low  | close | pct_chg | ma5  | ma20 |
 | --------- | ---------- | ---- | ---- | ---- | ----- | ------- | ---- | ---- |
@@ -192,4 +192,5 @@ Output: 2019-11-01
 ![Tick of 000001 XSHG(SSE index)](https://github.com/konhay/easy-quant/assets/26830433/c39031a3-108c-4a3a-b5d1-5bc9587c99b2)
 
 ## TODO
-We will continue to improve existing capabilities and integrate more available math, statistics, and deep learning methods. Most of all, we will focus on the development of stock indicators and trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
+
+AI methods have also been integrated in EeayQuaut, but currently, their performance in predicting stock returns is not ideal. We will continue to improve them and enhance other existing capabilities. Next, we will focus on the development of alpha trading strategies, as well as support for backtesting. If you have any good suggestions, please contact *konhay@163.com*.
