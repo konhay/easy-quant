@@ -168,7 +168,7 @@ Result of strategy *"findKeyStand"* on 20240220
 
 ### Example 2
 
-Strategies can also be based on mathematical methods, such as To find historical tick of most similarity with a given end date "2019-12-30" for 000001.XSHG(SSE Index).
+Strategies can also be based on mathematical methods, such as: *To find historical tick of most similarity with a given end date "2019-12-30" for 000001.XSHG(SSE Index)*.
 
 ```python
 from tools.math_tools import get_similarity
@@ -187,7 +187,7 @@ for i in trade_days:
 print(min(result.items(),key=lambda x:x[1])[0])
 ```
 
-Output: 2019-11-01
+	Output: 2019-11-01
 
 ![Tick of 000001 XSHG(SSE index)](https://github.com/konhay/easy-quant/assets/26830433/c39031a3-108c-4a3a-b5d1-5bc9587c99b2)
 
