@@ -112,7 +112,7 @@ SELECT t.statement FROM finance.sql_statement t WHERE name = 'getSuddenLimit' AN
 
 *PS: [Meitu](https://pc.meitu.com/) provides free online picture stitching service (long picture stitching).*
 
-#### Profit and Loss Distribution
+Profit and Loss Distribution
 
 ```python
 from service.tushare_querier import get_distribution
@@ -122,7 +122,7 @@ df = get_distribution(trade_date="20240510")
 plot_distribution(df)
 ```
 
-#### Animation Effect
+Animation Effect
 
 ```python
 from service.tushare_querier import get_stock_daily
@@ -132,7 +132,7 @@ df = get_stock_daily(ts_code="000001.SZ", trade_date="20240510", count=120)
 plot_animations_px(df, y_name='close')
 ```
 
-#### Candlestick
+Candlestick
 
 ```python
 from service.tushare_querier import get_stock_daily
