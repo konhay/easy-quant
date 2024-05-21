@@ -46,7 +46,7 @@ The ***tools*** package provides some basic functions, such as database services
 ## Robust Database
 ![image](https://github.com/konhay/easy-quant/assets/26830433/fa6fc289-e136-4804-a49c-c405ac5c1893)
 
-<u>Let the database take over as much as possible.</u> Based on this principle, we will build lightweight python applications. With the powerful functions of *mysql* database, we can not only define built-in functions, but also encapsulate all complex data processing and query operations into stored procedures or customized query statements.
+*Let the database take over as much as possible.* Based on this principle, we will build lightweight python applications. With the powerful functions of *mysql* database, we can not only define built-in functions, but also encapsulate all complex data processing and query operations into stored procedures or customized query statements.
 
 ### Examples
 #### User-defined functions
@@ -152,7 +152,7 @@ from tools.mysql_service import MySQLUtil
 from service.tushare_querier import get_query_statement
 
 sql = get_query_statement("findKeyStand")
-args = {"trade_date": "20240510"}
+args = {"trade_date": "20240220"}
 df = MySQLUtil.df_read(sql, args)
 ```
 
